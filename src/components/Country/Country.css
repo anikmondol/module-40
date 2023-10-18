@@ -1,0 +1,16 @@
+.Country{
+    border: 2px solid skyblue;
+    margin: 15px;
+    padding: 15px;
+    border-radius: 15px;
+    background-color: rgb(203, 216, 219);
+}
+
+.img{
+    width: 320px;
+    height: 200px;
+}
+
+.Visited1{
+    background-color: rgb(209, 214, 106);
+}
