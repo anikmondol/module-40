@@ -3,7 +3,7 @@ import { useState } from 'react';
 import './Country.css'
 import PropTypes from 'prop-types'
 
-const Country = ({country, handelVisitedCountries}) => {
+const Country = ({country, handelVisitedCountries, handelRemove}) => {
     // console.log(country);
     const {name, flags,population,area,region,capital, cca3} = country;
     const [visited, setVisited] = useState(false);
@@ -24,6 +24,9 @@ const Country = ({country, handelVisitedCountries}) => {
           handelVisitedCountries(country);
         }}>{visited?"Visited":"Going"}</button>
             { visited ? 'I am visited this country.' : "I want to Visited"}
+            <br />
+            <br />
+            <button onClick={() =>handelRemove(country)}>Remove</button>    
         </div>
     );
 };

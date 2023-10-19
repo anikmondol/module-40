@@ -5,6 +5,8 @@ import './Countries.css'
 const Countries = () => {
     const [countries, setCountries] = useState([]);
     const [visitedCountries, setVisitedCountries] = useState([]);
+    const [removes, setRemove] = useState([]);
+
 
 
     useEffect(() => {
@@ -17,21 +19,31 @@ const Countries = () => {
     const handelVisitedCountries = country =>{
         setVisitedCountries([...visitedCountries, country])
     }
+
+    const handelRemove = (country) =>{
+        
+        const remaining = removes.filter(remove => remove.cca3 !==  country.cca3)
+        setRemove(remaining) 
+    }
+
     return (
         <div>
             <h3>Countries: {countries.length}</h3>
+            {/* visited country */}
             <div>
                 <h4>Visited Countries: {visitedCountries.length}</h4>
                 <ol className="Text">
                     {
-                        visitedCountries.map((country, idx) => <p key={idx}>{country.name.common}</p>)
+                        visitedCountries.map((country, idx) => <ol key={idx}>{country.name.common}</ol>)
                     }
                 </ol>
 
             </div>
+            {/* display countries */}
             <div className="Countries-Container">
                 {
-                    countries.map((country, idx) => <Country key={idx} country={country} handelVisitedCountries={handelVisitedCountries}></Country>)
+                    countries.map((country, idx) => <Country key={idx} country={country} handelVisitedCountries={handelVisitedCountries}
+                    handelRemove={handelRemove}></Country>)
                 }
             </div>
         </div>
